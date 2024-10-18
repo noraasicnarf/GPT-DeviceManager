@@ -116,7 +116,7 @@ class GPT():
       result = send_command(commands)
       
       #append tool result
-      self.messages.append({
+      tool_result = ({
           "role": "tool",
           "content": [
               {
@@ -126,6 +126,8 @@ class GPT():
           ],
           "tool_call_id": call_id
       })
+
+      self.messages.append(tool_result)
     
     # Generate unstreamed response
     def generate_response(self, chat):
