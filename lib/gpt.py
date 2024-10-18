@@ -129,8 +129,9 @@ class GPT():
     
     # Generate unstreamed response
     def generate_response(self, chat):
-        if chat.choices[0].message.tool_calls is not None:
+        if chat.choices[0].message.tool_calls is not None: # tool calls
             self.tool_call(chat)
+            #create response with tool return
             chat = self.create_chat(temperature=1)
             return chat.choices[0].message.content
         else:
